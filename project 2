@@ -1,0 +1,52 @@
+package m;
+import java.util.Scanner;
+
+public class TaxCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String name;
+
+        // Getting the employee namessss
+        while (true) {
+            System.out.println("Enter the full name of the employee (first and last name):");
+            name = scanner.nextLine().trim();
+
+            // Check if the name contains at least two parts to verify for code to work
+            if (name.split("\s+").length < 2) {
+                System.out.println("Please enter both first and last name.");
+            } else {
+                break; // Name is valid, exit the loop
+            }
+        }
+        // Getting and validating income
+        System.out.println("Enter the income of " + name + " in J$ (Javean Dollar):");
+        double income = scanner.nextDouble();
+        if (income < 0) {
+            System.out.println("Invalid input, income should be zero or more");
+            return;
+        }
+
+        // Rounding down the income to remove any fractions
+        int roundedIncome = (int) income;
+
+        // Calculating the tax of the code
+        double tax = calculateTax(roundedIncome);
+
+        // Displaying the results
+        System.out.println("Name: " + name);
+        System.out.println("Income: " + roundedIncome + " J$");
+        System.out.println("Income Tax: " + (int)tax + " J$");
+    }
+
+    private static double calculateTax(int income) {
+        if (income <= 4000) {
+            return 0;
+        } else if (income <= 5500) {
+            return (income - 4000) * 0.10;
+        } else if (income <= 33500) {
+            return 150 + (income - 5500) * 0.20;
+        } else {
+            return 150 + 28000 * 0.20 + (income - 33500) * 0.40;
+        }
+    }
+}
