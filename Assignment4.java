@@ -7,18 +7,18 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.stream.Stream;
 /**
- * Glaycon Cezarotto 
+ * Kevin Belman
  * Object Programming 
- * Purpose: This program is designed to read integer values 
+ * Purpose: This program is designed to read integer values in this running prpgramm
  * from a text file and organize them into a two-dimensional jagged array.
- * My file path for the data and/or run configuration argument is C:\Users\maski\eclipse-workspace\JavaProjects\src\m\assignment4Data.txt
+ * 
  */
 public class Assignment4 {
 
     /**
      * Returns the number of lines in the specified text file.
      *
-     * @param filename The path to the file.
+     * @param filename
      * @return The number of lines in the file.
      * @throws IOException If an I/O error occurs opening the file.
      */
@@ -32,7 +32,7 @@ public class Assignment4 {
      * Creates a two-dimensional array from a file, with each row in the file becoming a row in the array.
      *
      * @param filename The path to the file.
-     * @return A jagged array containing the file's contents.
+     * 
      * @throws IOException If an I/O error occurs reading the file.
      */
     public static int[][] create2DArray(String filename) throws IOException {
@@ -54,7 +54,7 @@ public class Assignment4 {
     /**
      * Finds the index of the longest row in a two-dimensional array.
      *
-     * @param array The array to search.
+     * 
      * @return The index of the longest row.
      */
     public static int findLongestRow(int[][] array) {
@@ -107,8 +107,6 @@ public class Assignment4 {
     public static void main(String[] args) {
         Scanner inputScanner = new Scanner(System.in);
         System.out.println("Please enter the path to your data file:");
-        //this will allow the user to enter their pathing for the data file
-        // As an a example mine is C:\Users\maski\eclipse-workspace\JavaProjects\src\m\assignment4Data.txt 
         String filename = inputScanner.nextLine();
         try {
             System.out.println("Number of lines in the file = " + getNoLines(filename));
