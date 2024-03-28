@@ -1,11 +1,7 @@
 package a5;
 
 /**
- * Glaycon Cezarotto 
- * Object Programming 
- * Represents a node in the xy-coordinate system.
- * Ensures x and y values are within the range [-100, 100].
- * Provides functionalities to get and set x and y, add nodes, and check nodes equality.
+ * Kevin Belman
  */
 public class Node {
     private int x;
@@ -14,7 +10,7 @@ public class Node {
     private static final int MAX_VALUE = 100;
 
     /**
-     * Default constructor. Initializes the node at (0,0).
+     *  Initializes the node at (0,0).
      */
     public Node() {
         this.x = 0;
@@ -22,8 +18,7 @@ public class Node {
     } 
 
     /**
-     * Copy constructor. Creates a new node with the same coordinates as the given node.
-     * @param other The node to copy from.
+     * Copy constructor
      */
     public Node(Node other) {
         this.x = other.x;
@@ -31,10 +26,7 @@ public class Node {
     }
 
     /**
-     * Constructs a node with given x and y values.
-     * @param x The x-coordinate.
-     * @param y The y-coordinate.
-     * @throws IllegalArgumentException if x or y are out of the valid range.
+     * Work more on this 
      */
     public Node(int x, int y) {
         validateRange(x, y);
@@ -43,8 +35,7 @@ public class Node {
     }
 
     /**
-     * Gets the x-coordinate.
-     * @return The x-coordinate.
+     * Gets the x-cord
      */
     public int getX() {
         return x;
@@ -52,8 +43,7 @@ public class Node {
 
     /**
      * Sets the x-coordinate.
-     * @param x The new x-coordinate.
-     * @throws IllegalArgumentException if x is out of the valid range.
+     * param x The new x-coordinate.
      */
     public void setX(int x) {
         validateRange(x, this.y);
@@ -62,16 +52,14 @@ public class Node {
 
     /**
      * Gets the y-coordinate.
-     * @return The y-coordinate.
+     * return The y-coordinate.
      */
     public int getY() {
         return y;
     }
 
     /**
-     * Sets the y-coordinate.
-     * @param y The new y-coordinate.
-     * @throws IllegalArgumentException if y is out of the valid range.
+     * Sets the y-coordinate
      */
     public void setY(int y) {
         validateRange(this.x, y);
@@ -80,8 +68,6 @@ public class Node {
 
     /**
      * Adds the given node to this node by adding their coordinates.
-     * @param other The node to add.
-     * @throws IllegalArgumentException if the result is out of the valid range.
      */
     public void add(Node other) {
         int newX = this.x + other.x;
@@ -93,8 +79,6 @@ public class Node {
 
     /**
      * Checks if this node is equal to another object.
-     * @param obj The object to compare with.
-     * @return true if obj is a Node with the same x and y values, false otherwise.
      */
     @Override
     public boolean equals(Object obj) {
@@ -105,8 +89,7 @@ public class Node {
     }
 
     /**
-     * Returns a string representation of the node.
-     * @return A string in the format "(x, y)".
+     
      */
     @Override
     public String toString() {
@@ -115,9 +98,9 @@ public class Node {
 
     /**
      * Validates that the given x and y values are within the allowed range.
-     * @param x The x-coordinate to validate.
-     * @param y The y-coordinate to validate.
-     * @throws IllegalArgumentException if x or y are out of the valid range.
+     * x The x-coordinate to validate.
+     * The y-coordinate to validate.
+     *if x or y are out of the valid range.
      */
     private void validateRange(int x, int y) {
         if (x < MIN_VALUE || x > MAX_VALUE || y < MIN_VALUE || y > MAX_VALUE) {
