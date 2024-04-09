@@ -1,0 +1,80 @@
+package a6;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Nodes {
+    private ArrayList<INode> nodes;
+
+    public Nodes() {
+        this.nodes = new ArrayList<>();
+    }
+
+    public void fill(int size) {
+        nodes.clear(); // Ensure the list is empty before filling
+        for (int i = 0; i < size; i++) {
+            try {
+                if (Math.random() > 0.5) {
+                    nodes.add(NodeFactory.getNode());
+                } else {
+                    nodes.add(NodeFactory.getThreeDNode());
+                }
+            } catch (Exception e) {
+                // If an exception occurs, print it and continue to try for the next node
+                System.out.println("Error creating a node: " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Clears the collection 
+     */
+    public void clear() {
+        nodes.clear();
+    }
+
+    /**
+     * Counts the number of Node 
+     */
+    public int countNodes() {
+        int count = 0;
+        for (INode node : nodes) {
+            if (node instanceof Node && !(node instanceof ThreeDNode)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Counts the number of ThreeDNode obje
+     */
+    public int countThreeDNodes() {
+        int count = 0;
+        for (INode node : nodes) {
+            if (node instanceof ThreeDNode) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Sorts the collection based on the sum of the node's coordinates.
+     */
+    public void sort() {
+        Collections.sort(nodes, new Sorter());
+    }
+
+    /**
+     * Returns a string representation of all nodes 
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (INode node : nodes) {
+            sb.append(node.toString()).append("\n");
+        }
+        return sb.toString().trim(); // Trim to remove the last newline character
+    }
+}
