@@ -6,19 +6,19 @@ public class ComplexTest {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        // Prompt the user to enter the first complex number
+        // 
         System.out.print("Enter the first complex number: ");
         double a = input.nextDouble();
         double b = input.nextDouble();
         Complex c1 = new Complex(a, b);
 
-        // Prompt the user to enter the second complex number
+        // 
         System.out.print("Enter the second complex number: ");
         double c = input.nextDouble();
         double d = input.nextDouble();
         Complex c2 = new Complex(c, d);
 
-        // Perform arithmetic operations
+        // operations
         Complex sum = c1.add(c2);
         Complex difference = c1.subtract(c2);
         Complex product = c1.multiply(c2);
