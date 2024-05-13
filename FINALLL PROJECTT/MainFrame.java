@@ -19,7 +19,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         createUI();
         setupActions();
-        setFieldsEnabled(false); // Initially disable fields
+        setFieldsEnabled(false); 
         loginItem.setEnabled(true);
         logoutItem.setEnabled(false);
         saveItem.setEnabled(false);
@@ -40,9 +40,9 @@ public class MainFrame extends JFrame {
 
         loginItem = new JMenuItem("Log in");
         logoutItem = new JMenuItem("Log out");
-        logoutItem.setEnabled(false); // Initially disabled
+        logoutItem.setEnabled(false); //difficult but I got it
         saveItem = new JMenuItem("Save");
-        exitItem = new JMenuItem("Exit"); // Initialize exitItem here
+        exitItem = new JMenuItem("Exit"); // runs good now 
 
         fileMenu.add(loginItem);
         fileMenu.add(logoutItem);
@@ -54,7 +54,7 @@ public class MainFrame extends JFrame {
         aboutItem = new JMenuItem("About");
         helpMenu.add(aboutItem);
         menuBar.add(helpMenu);     
-        // Initialize all UI components before adding or using them
+        // (0,2,5,5) works now
         JPanel inputPanel = new JPanel(new GridLayout(0, 2, 5, 5));
         exerciseTypeDropdown = new JComboBox<>(new String[]{"Run/Walk", "Weightlifting", "Rock Climbing"});
         txtName = new JTextField();
@@ -69,7 +69,7 @@ public class MainFrame extends JFrame {
         displayArea = new JTextArea(10, 40);
         displayArea.setEditable(false);
 
-        // Add components to the input panel
+        // Add components
         inputPanel.add(new JLabel("Exercise Type:"));
         inputPanel.add(exerciseTypeDropdown);
         inputPanel.add(new JLabel("Name:"));
@@ -92,10 +92,10 @@ public class MainFrame extends JFrame {
         getContentPane().add(inputPanel, BorderLayout.NORTH);
         getContentPane().add(new JScrollPane(displayArea), BorderLayout.CENTER);
         
-        // Ensure all UI components are instantiated before this call
-        setFieldsEnabled(false);  // Ensure fields are disabled until login
+        // instantiated before this call
+        setFieldsEnabled(false);  // disabled until login
 
-        // Now safely call updateFieldVisibility
+        // Now you should safely call updateFieldVisibility
         updateFieldVisibility();
     }
     private void showAboutDialog() {
@@ -116,11 +116,11 @@ public class MainFrame extends JFrame {
             loginItem.setEnabled(true);
             logoutItem.setEnabled(false);
             saveItem.setEnabled(false);
-            displayArea.setText(""); // Optionally clear display area
+            displayArea.setText(""); // clear
         });
 
 
-        exitItem.addActionListener(e -> System.exit(0)); // This line closes the application
+        exitItem.addActionListener(e -> System.exit(0)); // closes the application
 
         exerciseTypeDropdown.addActionListener(e -> updateFieldVisibility());
         aboutItem.addActionListener(e -> showAboutDialog());
@@ -149,7 +149,7 @@ public class MainFrame extends JFrame {
                 txtReps.setEnabled(true);
                 break;
         }
-        // Enable common fields regardless of selection
+        //regardless of selection enable 
         txtName.setEnabled(true);
         txtDate.setEnabled(true);
         txtDuration.setEnabled(true);
@@ -170,16 +170,16 @@ public class MainFrame extends JFrame {
         btnAddExercise.setEnabled(false);
         btnSave.setEnabled(false);
 
-        // Only enable the dropdown if 'enabled' is true
+        // dropdown if  enabledis true
         exerciseTypeDropdown.setEnabled(enabled);
 
-        // Menu items
+        // Menu items for the programm
         logoutItem.setEnabled(enabled);
         loginItem.setEnabled(!enabled);
         saveItem.setEnabled(enabled);
 
         if (enabled) {
-            // Only the dropdown is enabled, rest are controlled by the dropdown's action
+            // this was diffuclt but i got it
             exerciseTypeDropdown.addActionListener(e -> updateFieldVisibility());
         }
     }
@@ -212,7 +212,7 @@ public class MainFrame extends JFrame {
             }
 
             exercises.add(exercise);
-            displayArea.append(exercise.toStringCustomInfo() + "\n");  // Using the custom method for formatted output
+            displayArea.append(exercise.toStringCustomInfo() + "\n");  // Got it
         } catch (IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Input Error", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
@@ -249,14 +249,14 @@ public class MainFrame extends JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Save Exercises");
         fileChooser.setApproveButtonText("Save");
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home"))); // Start directory for file chooser
+        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home"))); // Start directory 
 
         int userSelection = fileChooser.showSaveDialog(this);
 
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
             try {
-                // Assuming ExerciseWriter has a method that takes a file path as String
+                // method that takes a file path as String
                 if (ExerciseWriter.writeToFile(fileToSave.getPath(), exercises)) {
                     JOptionPane.showMessageDialog(this, "Exercises saved successfully to " + fileToSave.getPath(), "Save Successful", JOptionPane.INFORMATION_MESSAGE);
                 } else {
@@ -281,7 +281,7 @@ public class MainFrame extends JFrame {
                     logoutItem.setEnabled(true);
                     saveItem.setEnabled(true);
                 } else {
-                    System.exit(0);  // Or handle it as needed
+                    System.exit(0);  
                 }
             }
         });
