@@ -18,7 +18,7 @@ class LoginFrame extends JDialog {
     }
 
     private LoginFrame(JFrame parent) {
-        super(parent, "Login", true); // Modal dialog
+        super(parent, "Login", true); //
         setLayout(new GridLayout(3, 2));
         add(new JLabel("Username:"));
         add(txtUsername);
@@ -35,18 +35,18 @@ class LoginFrame extends JDialog {
             String password = new String(txtPassword.getPassword());
             if ("healthy".equals(username) && "donuts".equals(password)) {
                 isLoggedIn = true; // Set logged in status
-                setVisible(false); // Close the dialog
-                dispose(); // Ensure the dialog is disposed
+                setVisible(false); // 
+                dispose(); // 
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect username or password", "Login Failed", JOptionPane.ERROR_MESSAGE);
-                isLoggedIn = false; // Explicitly set logged out status
+                isLoggedIn = false; //
             }
         });
 
         btnCancel.addActionListener(e -> {
             isLoggedIn = false;
             setVisible(false);
-            dispose(); // Ensure dialog is closed properly
+            dispose(); // closed properly!!
         });
 
 
@@ -54,8 +54,8 @@ class LoginFrame extends JDialog {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                // Handle the close operation here if necessary
-                System.exit(0); // Optionally exit the application
+                // Handle 
+                System.exit(0); // Optionally exit 
             }
         });
 
