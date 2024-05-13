@@ -12,7 +12,7 @@ public abstract class Exercise implements Comparable<Exercise> {
 
     public Exercise(String name, String dateStr, double duration) throws ParseException {
         setName(name);
-        setDate(dateStr); // Parses the date string and sets the date
+        setDate(dateStr); 
         setDuration(duration);
     }
 
@@ -41,7 +41,7 @@ public abstract class Exercise implements Comparable<Exercise> {
     }
 
     public void setDuration(double duration) {
-        this.duration = Math.max(duration, 0); // Ensure duration is not negative
+        this.duration = Math.max(duration, 0); // make sure that the duration is not negative(works)
     }
 
     protected String getDateAsString() {
@@ -55,7 +55,7 @@ public abstract class Exercise implements Comparable<Exercise> {
 
     public abstract String getType();
     public abstract double getCaloriesBurned();
-    public abstract String toStringCustomInfo(); // Ensure this method is implemented in all subclasses to handle specific info
+    public abstract String toStringCustomInfo(); // make sure this method works
 
     @Override
     public int compareTo(Exercise other) {
